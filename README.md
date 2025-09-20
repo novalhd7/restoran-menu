@@ -34,7 +34,7 @@ restoran-menu/
 
 ---
 
-## ⚙️ Setup Backend
+## ⚙️ Setup 
 
 ### 1. Clone & Install
 ```bash
