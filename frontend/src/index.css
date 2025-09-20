@@ -1,0 +1,123 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Container login */
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+form button {
+  background: #007bff;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+form button:hover {
+  background: #0056b3;
+}
+/* Dashboard styles */
+.dashboard-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+}
+
+.dashboard-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.meja-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.meja-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meja-card h4 {
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.meja-card p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.meja-card button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.meja-card button:hover {
+  background: #0056b3;
+}
