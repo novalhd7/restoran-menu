@@ -1,62 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+  </a>
 </p>
 
-## About Laravel
+<h1 align="center">🍽️ Restoran Menu App</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+Aplikasi Point of Sale sederhana untuk restoran dengan <b>Laravel 12 (Backend API)</b> + <b>React Vite (Frontend)</b>.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+<a href="https://github.com/username/restoran-menu/actions"><img src="https://img.shields.io/github/actions/workflow/status/username/restoran-menu/laravel.yml?branch=main" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Tech Stack
+- **Backend**: Laravel 12, Sanctum (API Token), DomPDF (Receipt PDF)
+- **Frontend**: React + Vite, Axios, Material UI
+- **Database**: MySQL / MariaDB
+- **Auth**: Role-based (Pelayan, Kasir)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📂 Struktur Repo
+restoran-menu/
+├── backend/ # Laravel API
+└── frontend/ # React Vite frontend
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## ⚙️ Setup Backend
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Clone & Install
+```bash
+git clone https://github.com/username/restoran-menu.git
+cd restoran-menu/backend
 
-### Premium Partners
+composer install
+2. Konfigurasi Environment
+bash
+Salin kode
+cp .env.example .env
+Edit .env sesuai DB lokal:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+makefile
+Salin kode
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=restoran_menu
+DB_USERNAME=root
+DB_PASSWORD=
+3. Generate App Key
+bash
+Salin kode
+php artisan key:generate
+4. Install Sanctum & DomPDF
+bash
+Salin kode
+composer require laravel/sanctum
+composer require barryvdh/laravel-dompdf
+php artisan vendor:publish --provider="Laravel\\Sanctum\\SanctumServiceProvider"
+5. Migrasi Database & Seeder
+bash
+Salin kode
+php artisan migrate --seed
+Seeder menambahkan:
 
-## Contributing
+10 meja (Meja 1 → Meja 10)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+User Pelayan (pelayan@example.com / password)
 
-## Code of Conduct
+User Kasir (kasir@example.com / password)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. Jalankan Backend
+bash
+Salin kode
+php artisan serve --port=8000
+👉 API base URL: http://localhost:8000/api
 
-## Security Vulnerabilities
+⚙️ Setup Frontend
+1. Install Project
+bash
+Salin kode
+cd ../frontend
+npm install
+npm install axios @mui/material @emotion/react @emotion/styled @mui/icons-material
+2. Konfigurasi API URL
+Buat file .env di folder frontend:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+bash
+Salin kode
+VITE_API_BASE_URL=http://localhost:8000/api
+3. Jalankan Dev Server
+bash
+Salin kode
+npm run dev
+👉 Frontend URL default: http://localhost:5173
 
-## License
+🔑 Default Login
+Role	Email	Password
+Pelayan	pelayan@example.com	password
+Kasir	kasir@example.com	password
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# restoran-menu
+📌 Fitur Utama
+✅ Login (role: Pelayan, Kasir)
+
+✅ List Meja (status kosong / terisi)
+
+✅ CRUD Makanan
+
+✅ Open Order (buka pesanan di meja kosong)
+
+✅ Tambah item ke pesanan
+
+✅ Tutup Order (hanya Kasir via Policy)
+
+✅ Generate Receipt (PDF)
+
