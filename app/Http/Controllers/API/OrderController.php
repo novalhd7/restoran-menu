@@ -83,6 +83,6 @@ class OrderController extends Controller {
         $order = Order::with('items.makanan','meja','user')->findOrFail($id);
         $data = ['order'=>$order];
         $pdf = PDF::loadView('pdf.receipt',$data);
-        return $pdf->download("receipt_order_{$order->id}.pdf");
+        return $pdf->stream("receipt-order-{$order->id}.pdf");
     }
 }

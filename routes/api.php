@@ -22,8 +22,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/orders/{order}/close',[OrderController::class,'close']);
     Route::get('/orders',[OrderController::class,'index']);
     Route::get('/orders/{id}',[OrderController::class,'detail']);
-    Route::get('/orders/{id}/receipt',[OrderController::class,'receipt'])
-        ->name('orders.receipt'); // ✅ fixed
+    
 });
 
 // routes/api.php
@@ -34,3 +33,6 @@ Route::get('/test', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/orders/{id}/receipt',[OrderController::class,'receipt'])
+    ->name('orders.receipt');

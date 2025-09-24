@@ -22,7 +22,8 @@ export default function DaftarMeja() {
     fetchMeja();
   }, []);
 
-  async function openOrder(mejaId) {
+  // ✅ ubah nama fungsi biar tidak tabrakan dengan variabel openOrder
+  async function handleOpenOrder(mejaId) {
     try {
       const res = await api.post('/orders/open', { meja_id: mejaId });
       nav(`/orders/${res.data.id}`);
@@ -51,7 +52,8 @@ export default function DaftarMeja() {
             <p className="empty-text">Tidak ada meja tersedia.</p>
           ) : (
             meja.map((m) => {
-              const openOrder = m.orders?.[0]; // hanya order open
+              const orderAktif = m.orders?.[0]; // hanya ambil order pertama (status open)
+
               return (
                 <div
                   key={m.id}
@@ -59,12 +61,18 @@ export default function DaftarMeja() {
                 >
                   <h4>Meja {m.nomor}</h4>
                   <p>Status: <b>{m.status}</b></p>
-                  {openOrder ? (
-                    <button className="btn btn-view" onClick={() => nav(`/orders/${openOrder.id}`)}>
+                  {orderAktif ? (
+                    <button
+                      className="btn btn-view"
+                      onClick={() => nav(`/orders/${orderAktif.id}`)}
+                    >
                       🔍 Lihat Order
                     </button>
                   ) : (
-                    <button className="btn btn-open" onClick={() => openOrder(m.id)}>
+                    <button
+                      className="btn btn-open"
+                      onClick={() => handleOpenOrder(m.id)}
+                    >
                       ➕ Buka Order
                     </button>
                   )}
